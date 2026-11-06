@@ -39,6 +39,7 @@ const persianStyles = [
   },
 ];
 
+
 export async function generateMetadata({
   params,
 }: {
@@ -47,29 +48,55 @@ export async function generateMetadata({
   const { locale } = await params;
 
   if (locale !== "en" && locale !== "fr") {
-    return {};
+    notFound();
   }
 
   const isFrench = locale === "fr";
+  const pageUrl = `https://persiankittens.ca/${locale}/breeds`;
+
+  const title = isFrench
+    ? "Race de chat Persan | Couleurs et caractéristiques | Modern Kittens"
+    : "Persian Cat Breed | Colors and Characteristics | Modern Kittens";
+
+  const description = isFrench
+    ? "Découvrez la race du chat Persan, ses magnifiques couleurs de robe, ses caractéristiques et ses besoins en matière de toilettage et de soins."
+    : "Learn about the Persian cat breed, its beautiful coat colors, distinctive characteristics, grooming needs and everyday care.";
 
   return {
-    title: isFrench
-      ? "Chatons persans | Modern Kittens"
-      : "Persian Kittens | Modern Kittens",
-
-    description: isFrench
-      ? "Découvrez les chatons persans, leurs couleurs de robe, leurs caractéristiques et leurs besoins en matière de soins."
-      : "Discover Persian kittens, their coat colors, characteristics and care needs.",
+    title,
+    description,
 
     alternates: {
-      canonical: `/${locale}/breeds`,
+      canonical: pageUrl,
       languages: {
-        en: "/en/breeds",
-        fr: "/fr/breeds",
+        en: "https://persiankittens.ca/en/breeds",
+        fr: "https://persiankittens.ca/fr/breeds",
+        "x-default": "https://persiankittens.ca/en/breeds",
       },
+    },
+
+    openGraph: {
+      title,
+      description,
+      url: pageUrl,
+      siteName: "Modern Kittens",
+      type: "website",
+      locale: isFrench ? "fr_CA" : "en_CA",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
+
 
 export default async function BreedsPage({
   params,

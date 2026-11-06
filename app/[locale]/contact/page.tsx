@@ -9,6 +9,7 @@ type Props = {
   searchParams: Promise<{ kitten?: string }>;
 };
 
+
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
@@ -19,23 +20,51 @@ export async function generateMetadata({
   }
 
   const fr = locale === "fr";
+  const pageUrl = `https://persiankittens.ca/${locale}/contact`;
+
+  const title = fr
+    ? "Contactez Modern Kittens | Chatons Persans au Canada"
+    : "Contact Modern Kittens | Persian Kittens in Canada";
+
+  const description = fr
+    ? "Contactez Modern Kittens pour obtenir des renseignements sur nos chatons Persans, leur disponibilité, leurs soins et le processus d'adoption."
+    : "Contact Modern Kittens for information about our Persian kittens, availability, care and the process of welcoming a kitten into your home.";
 
   return {
-    title: fr
-      ? "Contactez-nous | Modern Kittens"
-      : "Contact Us | Modern Kittens",
-    description: fr
-      ? "Contactez Modern Kittens pour toute question sur nos chatons Persans."
-      : "Contact Modern Kittens with questions about our Persian kittens.",
+    title,
+    description,
+
     alternates: {
-      canonical: `/${locale}/contact`,
+      canonical: pageUrl,
       languages: {
-        en: "/en/contact",
-        fr: "/fr/contact",
+        en: "https://persiankittens.ca/en/contact",
+        fr: "https://persiankittens.ca/fr/contact",
+        "x-default": "https://persiankittens.ca/en/contact",
       },
+    },
+
+    openGraph: {
+      title,
+      description,
+      url: pageUrl,
+      siteName: "Modern Kittens",
+      type: "website",
+      locale: fr ? "fr_CA" : "en_CA",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
+
 
 export default async function ContactPage({
   params,

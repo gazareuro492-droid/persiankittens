@@ -9,6 +9,7 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
+
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
@@ -19,18 +20,22 @@ export async function generateMetadata({
   }
 
   const isFrench = locale === "fr";
+  const pageUrl = `${BASE_URL}/${locale}/about`;
+
+  const title = isFrench
+    ? "À propos de Modern Kittens | Élevage familial de Persans"
+    : "About Modern Kittens | Family-Raised Persian Kittens";
+
+  const description = isFrench
+    ? "Découvrez l'histoire de Modern Kittens, notre passion familiale pour les chatons Persans, leurs soins quotidiens et notre engagement envers des foyers aimants."
+    : "Learn about Modern Kittens, our family passion for Persian kittens, their daily care and our commitment to finding them loving homes.";
 
   return {
-    title: isFrench
-      ? "À propos de nous | Modern Kittens Canada"
-      : "About Us | Modern Kittens Canada",
-
-    description: isFrench
-      ? "Découvrez Modern Kittens, notre passion familiale pour les chatons Persans et les soins que nous leur apportons."
-      : "Discover Modern Kittens, our family passion for Persian kittens and the care we give them.",
+    title,
+    description,
 
     alternates: {
-      canonical: `${BASE_URL}/${locale}/about`,
+      canonical: pageUrl,
       languages: {
         en: `${BASE_URL}/en/about`,
         fr: `${BASE_URL}/fr/about`,
@@ -39,19 +44,27 @@ export async function generateMetadata({
     },
 
     openGraph: {
-      title: isFrench
-        ? "À propos de Modern Kittens"
-        : "About Modern Kittens",
-      description: isFrench
-        ? "Une passion familiale pour les magnifiques chatons Persans."
-        : "A family passion for beautiful Persian kittens.",
-      url: `${BASE_URL}/${locale}/about`,
+      title,
+      description,
+      url: pageUrl,
       siteName: "Modern Kittens",
-      locale: isFrench ? "fr_CA" : "en_CA",
       type: "website",
+      locale: isFrench ? "fr_CA" : "en_CA",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
+
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;

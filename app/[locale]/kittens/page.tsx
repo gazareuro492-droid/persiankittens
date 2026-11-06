@@ -42,6 +42,7 @@ function translateColor(color: string, fr: boolean) {
 }
 
 
+
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
@@ -50,38 +51,51 @@ export async function generateMetadata({
   if (locale !== "en" && locale !== "fr") notFound();
 
   const fr = locale === "fr";
+  const pageUrl = `${BASE_URL}/${locale}/kittens`;
+
+  const title = fr
+    ? "Chatons Persans à Vendre au Canada | Modern Kittens"
+    : "Persian Kittens for Sale in Canada | Modern Kittens";
+
+  const description = fr
+    ? "Découvrez nos chatons Persans disponibles au Canada. Consultez leurs photos, leurs couleurs, leurs prix et leurs informations. Contactez Modern Kittens."
+    : "Discover Persian kittens available in Canada. Explore their photos, coat colors, prices and details. Contact Modern Kittens to learn more.";
 
   return {
-    title: fr
-      ? "Chatons Persans disponibles au Canada | Persian Kittens"
-      : "Persian Kittens for Sale in Canada | Persian Kittens",
-
-    description: fr
-      ? "Découvrez nos chatons Persans disponibles au Canada. Consultez leurs photos et leurs informations, puis contactez-nous."
-      : "Discover beautiful Persian kittens available in Canada. View kitten photos, details and availability.",
+    title,
+    description,
 
     alternates: {
-      canonical: `${BASE_URL}/${locale}/kittens`,
+      canonical: pageUrl,
       languages: {
         en: `${BASE_URL}/en/kittens`,
         fr: `${BASE_URL}/fr/kittens`,
+        "x-default": `${BASE_URL}/en/kittens`,
       },
     },
 
     openGraph: {
-      title: fr
-        ? "Nos chatons Persans disponibles"
-        : "Our Available Persian Kittens",
-      description: fr
-        ? "Découvrez nos magnifiques chatons Persans."
-        : "Meet our beautiful Persian kittens.",
-      url: `${BASE_URL}/${locale}/kittens`,
-      siteName: "Persian Kittens",
+      title,
+      description,
+      url: pageUrl,
+      siteName: "Modern Kittens",
       type: "website",
       locale: fr ? "fr_CA" : "en_CA",
     },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
+
 
 export default async function KittensPage({ params }: Props) {
   const { locale } = await params;
