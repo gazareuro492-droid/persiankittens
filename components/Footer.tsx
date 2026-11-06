@@ -12,12 +12,18 @@ export default function Footer({ locale }: FooterProps) {
     <footer className="border-t border-[#E9E4DA] bg-white">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-4 py-8 text-center sm:px-6">
 
-        <Link
-          href={`/${locale}`}
-          className="text-xl font-semibold text-[#294235]"
-        >
-          Modern<span className="text-[#A58B62]">Kittens.</span>
-        </Link>
+        
+<Link
+  href={`/${locale}`}
+  className="flex items-center"
+>
+  <img
+    src="/images/logo.png"
+    alt="Modern Kittens"
+    className="h-10 w-auto object-contain sm:h-12"
+  />
+</Link>
+
 
         <nav
           aria-label={

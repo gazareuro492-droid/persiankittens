@@ -31,6 +31,14 @@ export async function POST(request: Request) {
     const phone =
       typeof body.phone === "string" ? body.phone.trim() : "";
 
+    const province =
+      typeof body.province === "string"
+        ? body.province.trim()
+        : "";
+
+    const city =
+      typeof body.city === "string" ? body.city.trim() : "";
+
     const kittenId =
       typeof body.kittenId === "string" ? body.kittenId.trim() : "";
 
@@ -46,6 +54,10 @@ export async function POST(request: Request) {
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
       email.length > 254 ||
       phone.length > 30 ||
+      !province ||
+      province.length > 100 ||
+      !city ||
+      city.length > 100 ||
       message.length < 10 ||
       message.length > 5000
     ) {
@@ -55,7 +67,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Verify the selected kitten against our server-side data.
+    // Verify the selected kitten against server-side data.
     let selectedKitten = null;
 
     if (kittenId) {
@@ -94,6 +106,8 @@ CUSTOMER DETAILS
 Name: ${name}
 Email: ${email}
 Phone: ${phone || "Not provided"}
+Province: ${province}
+City: ${city}
 
 KITTEN OF INTEREST
 ${kittenDetails}

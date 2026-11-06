@@ -13,12 +13,15 @@ export default function Header({ locale }: HeaderProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex min-h-[76px] items-center justify-between gap-3 py-3">
           <Link
-            href={`/${locale}`}
-            className="shrink-0 text-xl font-semibold tracking-tight sm:text-3xl"
-          >
-            Modern<span className="text-[#A58B62]">Kittens.</span>
-          </Link>
-
+  href={`/${locale}`}
+  className="shrink-0 flex items-center"
+>
+  <img
+    src="/images/logo.png"
+    alt="Modern Kittens"
+    className="h-22 w-auto object-contain sm:h-24"
+  />
+</Link>
           <Link
             href={isFrench ? "/en" : "/fr"}
             hrefLang={isFrench ? "en" : "fr"}

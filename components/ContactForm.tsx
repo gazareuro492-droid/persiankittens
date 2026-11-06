@@ -35,6 +35,8 @@ export default function ContactForm({
       name: String(formData.get("name") || ""),
       email: String(formData.get("email") || ""),
       phone: String(formData.get("phone") || ""),
+      province: String(formData.get("province") || ""),
+      city: String(formData.get("city") || ""),
       kittenId: selectedKitten?.id || "",
       message: String(formData.get("message") || ""),
       locale,
@@ -65,13 +67,12 @@ export default function ContactForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+
       {/* Selected kitten details */}
       {selectedKitten && (
         <div className="rounded-2xl border border-[#EAE5DA] bg-[#FAF8F3] p-5">
           <h2 className="text-lg font-bold text-[#294C39]">
-            {fr
-              ? "Votre chaton d'intérêt"
-              : "Your Kitten of Interest"}
+            {fr ? "Votre chaton d'intérêt" : "Your Kitten of Interest"}
           </h2>
 
           <div className="mt-3 space-y-2 text-sm text-gray-700">
@@ -152,6 +153,46 @@ export default function ContactForm({
           className={inputClass}
           placeholder={
             fr ? "Votre numéro de téléphone" : "Your phone number"
+          }
+        />
+      </div>
+
+      {/* Province */}
+      <div>
+        <label htmlFor="province" className="font-medium text-[#294C39]">
+          {fr ? "Province" : "Province"} *
+        </label>
+
+        <input
+          id="province"
+          name="province"
+          type="text"
+          autoComplete="address-level1"
+          maxLength={100}
+          required
+          className={inputClass}
+          placeholder={
+            fr ? "Votre province" : "Enter your province"
+          }
+        />
+      </div>
+
+      {/* City */}
+      <div>
+        <label htmlFor="city" className="font-medium text-[#294C39]">
+          {fr ? "Ville" : "City"} *
+        </label>
+
+        <input
+          id="city"
+          name="city"
+          type="text"
+          autoComplete="address-level2"
+          maxLength={100}
+          required
+          className={inputClass}
+          placeholder={
+            fr ? "Votre ville" : "Enter your city"
           }
         />
       </div>
