@@ -1,0 +1,25 @@
+
+{
+  "Navigation": {
+    "home": "Accueil",
+    "kittens": "Nos chatons",
+    "breeds": "Nos races",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "Home": {
+    "eyebrow": "Un peu d'amour, des souvenirs pour la vie",
+    "title": "Trouvez votre chaton idéal",
+    "description": "Rencontrez nos chatons, découvrez leur personnalité et trouvez votre nouveau compagnon.",
+    "button": "Découvrir nos chatons",
+    "featured": "Rencontrez nos chatons",
+    "learnMore": "En savoir plus"
+  },
+  "Contact": {
+    "title": "Contactez-nous",
+    "name": "Votre nom",
+    "email": "Votre adresse e-mail",
+    "message": "Votre message",
+    "submit": "Envoyer ma demande"
+  }
+}

@@ -1,0 +1,25 @@
+
+{
+  "Navigation": {
+    "home": "Home",
+    "kittens": "Our Kittens",
+    "breeds": "Breeds",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "Home": {
+    "eyebrow": "A little love, a lifetime of memories",
+    "title": "Find your perfect kitten",
+    "description": "Meet our kittens, discover their personalities, and find your new companion.",
+    "button": "Meet Our Kittens",
+    "featured": "Meet Our Kittens",
+    "learnMore": "Discover More"
+  },
+  "Contact": {
+    "title": "Get in touch",
+    "name": "Your name",
+    "email": "Your email",
+    "message": "Your message",
+    "submit": "Send inquiry"
+  }
+}
