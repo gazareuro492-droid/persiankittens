@@ -159,6 +159,7 @@ export default async function KittensPage({ params }: Props) {
               <article
                 key={kitten.id}
 className="w-full overflow-hidden rounded-3xl border border-[#EAE5DA] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"              >
+
                 {/* KITTEN PHOTO */}
                 <div className="relative aspect-[4/5] overflow-hidden bg-[#F0EDE5]">
 
@@ -170,6 +171,7 @@ className="w-full overflow-hidden rounded-3xl border border-[#EAE5DA] bg-white s
                         : `${kitten.name}, available Persian kitten`
                     }
                     fill
+                    unoptimized
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
                     className="object-cover transition duration-500 hover:scale-105"
                   />
