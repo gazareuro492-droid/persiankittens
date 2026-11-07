@@ -29,7 +29,7 @@ export const kittens: Kitten[] = [
   sex: "Female",
   price: 1000,
   currency: "CAD",
-  image: "/images/ivy5.jpg",
+  image: "/images/Ivy5.jpg",
   available: true,
   description: {
     en: "Meet Ivy, a beautiful white Persian kitten. Contact us to learn more about her.",
@@ -113,7 +113,7 @@ export const kittens: Kitten[] = [
   sex: "Male",
   price: 1100,
   currency: "CAD",
-  image: "/images/cooper.jpeg",
+  image: "/images/Cooper.jpeg",
   available: true,
   description: {
     en: "Meet Cooper, a beautiful Golden Tabby Persian kitten. Contact us to learn more about him.",
