@@ -1,11 +1,11 @@
 
 import type { Metadata } from "next";
+import { GoogleTag } from "@/components/GoogleTag";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Modern Kittens",
-  description:
-    "Discover beautiful Persian kittens and learn about their care.",
+  description: "Discover beautiful Persian kittens and learn about their care.",
 };
 
 export default function RootLayout({
@@ -15,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <GoogleTag />
+        {children}
+      </body>
     </html>
   );
 }
