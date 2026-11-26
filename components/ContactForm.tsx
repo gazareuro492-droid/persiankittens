@@ -63,7 +63,7 @@ export default function ContactForm({
 
       // Google Ads conversion tracking
       window.gtag?.("event", "conversion", {
-        send_to: "AW-18587015379/NudaCL-UjCaDENox_Z5F",
+        send_to: "AW-18587015379/IscuCKr1jcAdENOx_Z5F",
         value: 1.0,
         currency: "CAD",
       });
