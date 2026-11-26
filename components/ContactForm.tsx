@@ -3,6 +3,12 @@
 
 import { useState, type FormEvent } from "react";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 type SelectedKitten = {
   id: string;
   name: string;
@@ -54,6 +60,13 @@ export default function ContactForm({
       if (!response.ok) {
         throw new Error("Submission failed");
       }
+
+      // Google Ads conversion tracking
+      window.gtag?.("event", "conversion", {
+        send_to: "AW-18587015379/NudaCL-UjCaDENox_Z5F",
+        value: 1.0,
+        currency: "CAD",
+      });
 
       form.reset();
       setStatus("success");
